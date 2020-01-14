@@ -1,0 +1,114 @@
+drop table if exists AccountInfo;
+create table AccountInfo (
+  AccNum integer primary key not null,
+  username varchar(100) not null,
+  password varchar(100) not null,
+  email text not null
+);
+
+drop table if exists AccountBal;
+create table AccountBal (
+  AccNum integer primary key not null,
+  bitcoinBal dec,
+  moneroBal dec,
+  ethereumBal dec
+  TotalUSD dec
+);
+
+drop table if exists CoinData;
+create table CoinData (
+  symbol varchar(10) primary key not null,
+  name text,
+  tradeVolume integer,
+  price integer
+);
+
+drop table if exists CoinChanges;
+create table CoinData (
+  symbol varchar(10) primary key not null,
+  1day dec,
+  1week dec,
+  1month dec,
+  3months dec,
+  1year dec
+);
+
+drop table if exists Transactions;
+create table Transactions (
+  transactionNum integer primary key not null,
+  DepositWithdrawal varchar(1),
+  AccNum integer,
+  amount dec,
+  coinSymbol varchar(10),
+  transactionFee dec,
+  date datetime not null
+);
+
+drop table if exists Fee;
+create table Fee (
+  transactionNum integer primary key not null,
+  transactionfee dec,
+  coinSymbol varchar(10),
+  updatedCompBal dec,
+  date datetime not null
+);
+
+drop table if exists MethodOfPayment;
+create table MethodOfPayment (
+  AccNum integer primary key not null,
+  methodOfPayment varchar(1),
+  AuthorizationAmount dec,
+  coinSymbol varchar(10)
+);
+
+drop table if exists CreditDebit;
+create table CreditDebit (
+  AccNum integer primary key not null,
+  nameOnCard text,
+  cardNum integer,
+  CVC integer,
+  expirationDate text
+);
+
+drop table if exists Paypal;
+create table paypal (
+  AccNum integer primary key not null,
+  PaypalAccNum integer,
+  nameOnAcc text
+);
+
+drop table if exists TotalMarketInfo;
+create table CreditDebit (
+  coinSymbol integer primary key not null,
+  marketCap dec,
+  24HourVol dec,
+  percentDomBTC dec
+);
+
+drop table if exists AccInfoHasMP;
+create table AccInfoHasMP (
+  AccNum integer primary key not null
+);
+
+drop table if exists Relies;
+create table Relies (
+  AccNum integer primary key not null,
+  coinSymbol varchar(10) primary key
+);
+
+drop table if exists CoinDataHasCoinChanges;
+create table CoinDataHasCoinChanges (
+  coinSymbol varchar(10) primary key not null
+);
+
+drop table if exists AccbalHasTrans;
+create table AccbalHasTrans (
+  AccNum integer primary key not null,
+  transactionNum integer primary key
+);
+
+drop table if exists Affects;
+create table Affects (
+  coinSymbol varchar(10) primary key not null
+);
+ 

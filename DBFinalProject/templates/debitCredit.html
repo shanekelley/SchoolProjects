@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Debit Credit</title>
+    </head>
+<body>
+    <h1>Fill out your Debit/Credit card information</h1>
+    {% if step=="add_entry" %}
+        <form action="{{ url_for('debitCredit') }}" method="post">
+        Enter Debit/Credit Card Number : <input type="text" size="30" name="cardNum"><br>
+        Enter CVC: <input type="text" size="30" name="CVC"><br>
+        Enter Name as Appears on Card: <input type = "text" size = "30" name = "nameOnCard"><br>
+        Enter Expiration Date: <input type = "text" size = "30" name = "expDate"><br>
+        <input type="hidden" name="step" value="submitted">
+        <input type="submit">
+        </form>
+    {% elif step == "submitted" %}
+        Your post has been submitted.
+        <br>
+        <p>Please continue to the <a href="{{ url_for('dashboard') }}">dashboard.</a></p>
+        
+    {% endif %}
+</body>
+</html>

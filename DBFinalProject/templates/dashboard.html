@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Coin Stuff Dashboard</title>
+	<head>
+<body>
+	<h1>DashBoard</h1>
+	{% if CoinData|length > 0 %}
+		
+		<u1>
+		  {% for coin in CoinData %}
+			<li>{{coin.name}}’s price is {{coin.price}}.
+		  {% endfor %}
+		</u1>
+		<br>
+		<a href="{{ url_for('buysell') }}">Buy/Sell</a>
+		<br>
+		<a href="{{ url_for('methodOfPayment') }}">Add Payment Method</a>
+		<br>
+		<a href="{{ url_for('totalmarketinfo') }}">Total Market Info</a>
+		<br>
+		<a href="{{ url_for('delete') }}">Delete Account</a>
+        		
+        	  
+	{% else %}
+		You aren’t accessing the db db.<p>
+	{% endif %}
+</body>
+</html>

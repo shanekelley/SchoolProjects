@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Buy or Sell</title>
+    </head>
+<body>
+    <h1>Buy or sell</h1>
+    {% if step=="compose_entry" %}
+        {% if AccountBal|length > 0 %}
+            <ul>
+                {% for balance in AccountBal %}
+                   <li>Your Bitcoin balance is {{balance.bitcoinBal}}.
+                   <br>Your Monero balance is {{balance.moneroBal}}.
+                   <br>Your Etherium balance is {{balance.ethereumBal}}.
+                   <br>Your total balance is {{balance.totalBal}}.
+                {% endfor %}
+            </ul>
+        {% else %}
+            You aren't accessing the db.<p>
+        {% endif %}
+        <form action="{{ url_for('buysell') }}" method="post">
+        How much to deposit or withdraw? (withdraw with - sign): <input type="text" size="7" name="transAmount"><br>
+        From which account?:<br> <input type="radio" name="accChoice" value="bitcoinBal">Bitcoin <br>
+        <input type="radio" name="accChoice" value="moneroBal">Monero <br>
+        <input type="radio" name="accChoice" value="ethereumBal">Etherium <br>
+        <input type="hidden" name="step" value="add_entry">
+        <input type="submit">
+        </form>
+    {% elif step == "add_entry" %}
+        Your entry is incorrect. 
+    {% endif %}
+</body>
+</html>

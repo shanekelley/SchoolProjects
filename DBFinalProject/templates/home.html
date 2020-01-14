@@ -1,0 +1,21 @@
+
+
+<html>
+    <head>
+        <title>Cryptosite</title>
+    </head>
+<body>
+    <h1>Cryptosite Homepage</h1>
+    {% if CoinData|length > 0 %}
+        <ul>
+            {% for coin in CoinData %}
+                <li>{{coin.name}}'s price is {{coin.price}}.
+            {% endfor %}
+        </ul>
+    {% else %}
+        You aren't accessing the db.<p>
+    {% endif %}
+    <a href="{{ url_for('login') }}">Already a member? Log in!</a><br>
+    <a href="{{ url_for('signup') }}">Not yet a member? Sign up!</a>
+</body>
+</html>

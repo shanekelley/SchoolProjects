@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Buy or Sell</title>
+    </head>
+<body>
+    <h1>Buy or sell</h1>
+        <p>Transaction successful! Your updated balances are:</p>
+        {% if AccountBal|length > 0 %}
+            <ul>
+                {% for balance in AccountBal %}
+                   <li>Your Bitcoin balance is {{balance.bitcoinBal}}.
+                   <br>Your Monero balance is {{balance.moneroBal}}.
+                   <br>Your Etherium balance is {{balance.ethereumBal}}.
+                   <br>Your total balance is {{balance.totalBal}}.
+                {% endfor %}
+            </ul>
+        {% else %}
+            You aren't accessing the db.<p>
+        {% endif %}
+        <a href="{{ url_for('dashboard') }}">Return to dashboard</a><br>
+</body>
+</html>

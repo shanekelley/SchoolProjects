@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+<body>
+    <h1>Log In</h1>
+    <p>Incorrect username or password! Please try again.</p>
+    {% if step=="compose_entry" %}
+        <form action="{{ url_for('login') }}" method="post">
+        Username: <input type="text" size="40" name="uname"><br>
+        Password: <input type="text" size="40" name="pword"><br>
+        <input type="hidden" name="step" value="add_entry">
+        <input type="submit">
+        </form>
+    {% elif step == "add_entry" %}
+        Your enrty is incorrect. 
+    {% endif %}
+</body>
+</html>

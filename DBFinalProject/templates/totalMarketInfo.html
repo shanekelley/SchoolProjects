@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>Coin Stuff Total Market Info</title>
+	<head>
+<body>
+	<h1>Total Market Info</h1>
+        	{% if TotalMarketInfo|length > 0 %}
+		
+		
+		
+		<table>
+            <tr>
+                <th>Coin Symbol</th>
+                <th>Market Cap</th>
+                <th>24 Hour Volume</th>
+                <th>Market Supply</th>
+            </tr>
+            
+            {% for item in TotalMarketInfo %}
+            <tr>
+            
+                <td>{{item.coinSymbol}}</td>
+                <td>{{item.marketCap}}</td>
+                <td>{{item.TwentyFourHourVol}}</td>
+                <td>{{item.marketSupply}}</td>
+            </tr>
+            {% endfor %}
+         </table>
+         
+         <br />
+         <br />
+         
+         <table>
+            <tr>
+                <th>Symbol</th>
+                <th>1 Day</th>
+                <th>1 Week</th>
+                <th>1 Month</th>
+                <th>3 Months</th>
+                <th>1 Year</th>
+            </tr>
+            
+            {% for c in CoinChanges %}
+            <tr>
+            
+                <td>{{c.symbol}}</td>
+                <td>{{c.oneday}}</td>
+                <td>{{c.oneweek}}</td>
+                <td>{{c.onemonth}}</td>
+                <td>{{c.threemonths}}</td>
+                <td>{{c.oneyear}}</td>
+            </tr>
+            {% endfor %}
+         </table>
+        	  
+	{% else %}
+		You aren’t accessing the db.<p>
+	{% endif %}
+	<br>
+	<a href="{{ url_for('dashboard') }}">Dashboard</a><br>
+	
+</body>
+</html>
